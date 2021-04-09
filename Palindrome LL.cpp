@@ -31,3 +31,49 @@ return 0;
 
 }
 
+
+or 
+
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+
+struct ListNode* reve(struct ListNode* head);
+bool isPalindrome(struct ListNode* head){
+  if(head==NULL || head->next==NULL)
+    return true;
+  struct ListNode *slow,*fast;
+  slow=fast=head;
+  while(fast->next && fast->next->next){
+    fast=fast->next->next;
+    slow=slow->next;
+  }
+  slow->next=reve(slow->next);
+  slow=slow->next;
+  while(slow!=NULL){
+    if(head->val!=slow->val)
+      return false;
+    head=head->next;
+    slow=slow->next;
+  }
+  return true;
+}
+struct ListNode* reve(struct ListNode* head){
+  struct ListNode *cur,*prev,*next;
+  cur=head;
+  prev=NULL;
+  while(cur!=NULL){
+    
+    next=cur->next;
+    cur->next=prev;
+    prev=cur;
+    cur=next;
+  }
+  return prev;
+  }
+
