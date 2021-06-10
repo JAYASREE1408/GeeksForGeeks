@@ -7,3 +7,4 @@ int MissingNumber(vector<int>& a, int n) {
     }
     return sum-sum1;
 }
+ 
