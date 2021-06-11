@@ -6,7 +6,7 @@ Node* sortedMerge(Node* a, Node* b)
      return(b);
   else if (b==NULL) 
      return(a);
- 
+  
   if (a->data <= b->data) 
   {
      result = a;
